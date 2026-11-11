@@ -1,0 +1,23 @@
+name: 3-Test Action from Marketplace
+
+on:
+  workflow_dispatch: # Allows you to trigger this manually from the Actions tab
+
+jobs:
+  run-custom-action:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: You MUST check out your repository first to use a local composite action
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Call your local composite action using its folder path
+      - name: jctest1111
+        # You may pin to the exact commit or the version.
+        # uses: JamesCuneo/jcmp@c786f9420515a3bd406f22c8b1a5bc467ac416b2
+        uses: JamesCuneo/jcmp@jc20261111
+
+      # Step 3: Consume the output passed back from the composite action
+      - name: Use the returned random number
+        run: |
+          echo "The composite action successfully returned the number: ${{ steps.custom_rng.outputs.generated-number }}"
