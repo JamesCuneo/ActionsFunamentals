@@ -14,7 +14,7 @@ jobs:
       # Step 2: Call your local composite action using its folder path
       - name: Call Random Generator Action
         id: custom_rng # Give this step an ID so you can reference its outputs
-        uses: ./.github/actions/random-generator
+        uses: ./.github/workflows/random-generator
         with:
           user-name: 'Alice' # Passing the required input
 
